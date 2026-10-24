@@ -169,21 +169,35 @@ function decodeUltraCompactPayload(rawStr) {
   return payload;
 }
 function init(skipHash){
-if(!skipHash){
 var h=location.hash||'',q=location.search||'',p='';
-if(h.indexOf('data=')!==-1)p=h.split('data=')[1];
-else if(q.indexOf('data=')!==-1)p=q.split('data=')[1].split('&')[0];
-if(p){try{var dec=LZ.decompress(p);if(dec){if(dec.charAt(0)==='{')ST=JSON.parse(dec);else ST=decodeUltraCompactPayload(dec);}}catch(e){}}
-}
-var raw=(h.indexOf('data=')===-1&&h)?h.replace(/^#/,''):(q?q.replace(/^\?/,''):'');
-if(raw){
-  try{
-    var sp=new URLSearchParams(raw);
-    if(sp.get('c'))ST.c=sp.get('c');
-    if(sp.get('d'))ST.d=sp.get('d');
-    if(sp.get('v'))ST.v=sp.get('v');
-    if(sp.get('th'))ST.th=sp.get('th');
-  }catch(e){}
+if(!skipHash){
+  if(h.indexOf('data=')!==-1){
+    p=h.split('data=')[1].split('&')[0];
+  }else if(q.indexOf('data=')!==-1){
+    p=q.split('data=')[1].split('&')[0];
+  }
+  if(p){
+    try{
+      var dec=LZ.decompress(p);
+      if(dec){
+        if(dec.charAt(0)==='{') ST=JSON.parse(dec);
+        else ST=decodeUltraCompactPayload(dec);
+      }
+    }catch(e){}
+  }
+  var raw=(h.indexOf('data=')===-1&&h)?h.replace(/^#/,''):(q?q.replace(/^\?/,''):'');
+  if(h.indexOf('&')!==-1){
+    raw=h.substring(h.indexOf('&')+1);
+  }
+  if(raw){
+    try{
+      var sp=new URLSearchParams(raw);
+      if(sp.get('c'))ST.c=sp.get('c');
+      if(sp.get('d'))ST.d=sp.get('d');
+      if(sp.get('v'))ST.v=sp.get('v');
+      if(sp.get('th'))ST.th=sp.get('th');
+    }catch(e){}
+  }
 }
 if(window.__EVERAFTER_EMBEDDED_DATA__)ST=window.__EVERAFTER_EMBEDDED_DATA__;
 document.body.className='theme-'+(ST.th||'floral');
@@ -322,7 +336,24 @@ function escapeHtml(s){return(s||'').replace(/[&<>"']/g,function(m){return{'&':'
 window.onload=init;window.onhashchange=init;
 window.addEventListener('message',function(e){
   if(e.data&&e.data.type==='SEATSTUDIO_UPDATE'&&e.data.payload){
-    ST = e.data.payload;
+    var p=e.data.payload;
+    if(!ST) ST={};
+    if(p.c) ST.c=p.c;
+    if(p.d) ST.d=p.d;
+    if(p.v) ST.v=p.v;
+    if(p.th) ST.th=p.th;
+    if(p.l) ST.l=p.l;
+    if(p.t) ST.t=p.t;
+    if(p.o) ST.o=p.o;
+    if(window.__EVERAFTER_EMBEDDED_DATA__){
+      if(p.c) window.__EVERAFTER_EMBEDDED_DATA__.c=p.c;
+      if(p.d) window.__EVERAFTER_EMBEDDED_DATA__.d=p.d;
+      if(p.v) window.__EVERAFTER_EMBEDDED_DATA__.v=p.v;
+      if(p.th) window.__EVERAFTER_EMBEDDED_DATA__.th=p.th;
+      if(p.l) window.__EVERAFTER_EMBEDDED_DATA__.l=p.l;
+      if(p.t) window.__EVERAFTER_EMBEDDED_DATA__.t=p.t;
+      if(p.o) window.__EVERAFTER_EMBEDDED_DATA__.o=p.o;
+    }
     init(true);
   }
 });
