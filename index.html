@@ -170,13 +170,16 @@ function decodeUltraCompactPayload(rawStr) {
 }
 function init(skipHash){
 var h=location.hash||'',q=location.search||'',p='';
-if(!skipHash){
+if(skipHash !== true){
   if(h.indexOf('data=')!==-1){
     p=h.split('data=')[1].split('&')[0];
   }else if(q.indexOf('data=')!==-1){
     p=q.split('data=')[1].split('&')[0];
   }
   if(p){
+    try{
+      p=decodeURIComponent(p);
+    }catch(e){}
     try{
       var dec=LZ.decompress(p);
       if(dec){
@@ -199,7 +202,7 @@ if(!skipHash){
     }catch(e){}
   }
 }
-if(window.__EVERAFTER_EMBEDDED_DATA__)ST=window.__EVERAFTER_EMBEDDED_DATA__;
+if(window.__EVERAFTER_EMBEDDED_DATA__ && !p)ST=window.__EVERAFTER_EMBEDDED_DATA__;
 document.body.className='theme-'+(ST.th||'floral');
 var tr=TR[ST.l||'en']||TR.en;
 document.getElementById('uWlcm').textContent=tr.w;
@@ -333,7 +336,8 @@ if(isH)c+='<g class="pin-b" transform="translate('+t.x+','+(t.y-8)+')\"><path d=
 svg.innerHTML=c;
 }
 function escapeHtml(s){return(s||'').replace(/[&<>"']/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];});}
-window.onload=init;window.onhashchange=init;
+window.onload=function(){init();};window.onhashchange=function(){init();};
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){init();});}else{init();}
 window.addEventListener('message',function(e){
   if(e.data&&e.data.type==='SEATSTUDIO_UPDATE'&&e.data.payload){
     var p=e.data.payload;
