@@ -24,423 +24,803 @@
 <meta name="twitter:title" id="twTitle" content="Wedding Guest Seating Lookup &amp; Table Locator">
 <meta name="twitter:description" id="twDesc" content="Find your personalized wedding table seating assignment, dinner menu, and interactive floorplan locator.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&h=630&q=80">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&amp;family=Montserrat:wght@400;600;700&amp;family=Playfair+Display:ital,wght@0,600;1,400&amp;display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#fcfaf8;
-  --card:rgba(255,255,255,0.85);
-  --txt:#1f2937;
-  --mut:#64748b;
-  --acc:#3d5a45;
-  --accl:#edf3ee;
-  --gold:#c5a059;
-  --gold-glow:rgba(197,160,89,0.35);
-  --bdr:rgba(226,232,240,0.85);
-  --shd:0 12px 30px -4px rgba(0,0,0,0.06), 0 0 18px rgba(197,160,89,0.12);
-  --fh:'Playfair Display',serif;
-  --fb:'Montserrat',sans-serif;
-  --rad:18px;
-}
-body.theme-minimalist{
-  --bg:#f8fafc;
-  --card:rgba(255,255,255,0.88);
-  --txt:#0f172a;
-  --mut:#64748b;
-  --acc:#0f172a;
-  --accl:#f1f5f9;
-  --gold:#64748b;
-  --gold-glow:rgba(100,116,139,0.25);
-  --bdr:rgba(203,213,225,0.8);
-  --fh:'Montserrat',sans-serif;
-  --rad:10px;
-}
-body.theme-floral{
-  --bg:#faf6f3;
-  --card:rgba(255,255,255,0.86);
-  --txt:#2d3748;
-  --mut:#718096;
-  --acc:#4a6741;
-  --accl:#edf2eb;
-  --gold:#c5a059;
-  --gold-glow:rgba(197,160,89,0.35);
-  --bdr:rgba(226,220,213,0.85);
-  --fh:'Playfair Display',serif;
-  --rad:20px;
-}
-body.theme-blacktie{
-  --bg:#0d0f13;
-  --card:rgba(24,27,34,0.88);
-  --txt:#f8fafc;
-  --mut:#94a3b8;
-  --acc:#d4af37;
-  --accl:rgba(212,175,55,0.16);
-  --gold:#e6c86e;
-  --gold-glow:rgba(212,175,55,0.45);
-  --bdr:rgba(51,58,69,0.85);
-  --fh:'Cormorant Garamond',serif;
-  --rad:14px;
-  --shd:0 16px 40px rgba(0,0,0,0.6), 0 0 25px rgba(212,175,55,0.22);
-}
-body.theme-rustic{
-  --bg:#f7f2eb;
-  --card:rgba(255,255,255,0.86);
-  --txt:#3e2723;
-  --mut:#795548;
-  --acc:#b0573c;
-  --accl:#f8ede9;
-  --gold:#b8860b;
-  --gold-glow:rgba(184,134,11,0.35);
-  --bdr:rgba(222,214,205,0.85);
-  --fh:'Cormorant Garamond',serif;
-  --rad:14px;
-}
-body.theme-classic{
-  --bg:#f9f8f6;
-  --card:rgba(255,255,255,0.86);
-  --txt:#14213d;
-  --mut:#4a5568;
-  --acc:#1d3557;
-  --accl:#e8eef6;
-  --gold:#c5a059;
-  --gold-glow:rgba(197,160,89,0.35);
-  --bdr:rgba(222,216,206,0.85);
-  --fh:'Playfair Display',serif;
-  --rad:16px;
-}
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{
-  background:var(--bg);
-  color:var(--txt);
-  font-family:var(--fb);
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  line-height:1.5;
-  padding:0 14px 40px;
-  position:relative;
-  overflow-x:hidden;
+:root {
+  --bg: #faf7f2;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --txt: #1e293b;
+  --mut: #64748b;
+  --acc: #3d5a45;
+  --accl: #edf3ee;
+  --gold: #c5a059;
+  --gold-light: #fbf5b7;
+  --gold-glow: rgba(197, 160, 89, 0.4);
+  --gold-border: rgba(197, 160, 89, 0.55);
+  --gold-dash: rgba(197, 160, 89, 0.35);
+  --bdr: rgba(226, 232, 240, 0.85);
+  --shd: 0 16px 40px -6px rgba(0, 0, 0, 0.08), 0 0 24px rgba(197, 160, 89, 0.18);
+  --fh: 'Playfair Display', Georgia, serif;
+  --fb: 'Montserrat', -apple-system, sans-serif;
+  --fc: 'Great Vibes', cursive;
+  --rad: 20px;
 }
 
-/* Luxury Particle & Floating Shimmer Layer */
-.particles-bg{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-  overflow:hidden;
-}
-.shimmer-orb{
-  position:absolute;
-  border-radius:50%;
-  filter:blur(42px);
-  opacity:0.38;
-  animation:floatOrb 18s infinite ease-in-out alternate;
-  will-change:transform,opacity;
-}
-.shimmer-orb.o1{
-  width:280px;height:280px;
-  background:radial-gradient(circle,rgba(197,160,89,0.45) 0%,rgba(255,230,160,0.12) 60%,transparent 80%);
-  top:-60px;left:-60px;
-}
-.shimmer-orb.o2{
-  width:320px;height:320px;
-  background:radial-gradient(circle,rgba(197,160,89,0.35) 0%,rgba(212,175,55,0.1) 60%,transparent 80%);
-  bottom:8%;right:-80px;
-  animation-duration:22s;
-  animation-delay:-6s;
-}
-.shimmer-orb.o3{
-  width:220px;height:220px;
-  background:radial-gradient(circle,rgba(230,200,110,0.38) 0%,transparent 75%);
-  top:45%;left:25%;
-  animation-duration:16s;
-  animation-delay:-10s;
-}
-@keyframes floatOrb{
-  0%{transform:translate3d(0,0,0) scale(1);}
-  50%{transform:translate3d(28px,42px,0) scale(1.12);}
-  100%{transform:translate3d(-20px,24px,0) scale(0.95);}
+body.theme-minimalist {
+  --bg: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --txt: #0f172a;
+  --mut: #64748b;
+  --acc: #0f172a;
+  --accl: #f1f5f9;
+  --gold: #475569;
+  --gold-light: #94a3b8;
+  --gold-glow: rgba(100, 116, 139, 0.25);
+  --gold-border: rgba(148, 163, 184, 0.5);
+  --gold-dash: rgba(148, 163, 184, 0.3);
+  --bdr: rgba(203, 213, 225, 0.85);
+  --fh: 'Montserrat', sans-serif;
+  --rad: 12px;
 }
 
-.sparkle{
-  position:absolute;
-  color:var(--gold);
-  font-size:14px;
-  opacity:0;
-  user-select:none;
-  animation:floatSparkle 12s infinite ease-in-out;
-  text-shadow:0 0 6px var(--gold-glow);
-  will-change:transform,opacity;
-}
-.sparkle.s1{top:12%;left:10%;animation-delay:0s;font-size:16px;}
-.sparkle.s2{top:22%;right:12%;animation-delay:2.5s;font-size:12px;}
-.sparkle.s3{top:38%;left:16%;animation-delay:5s;font-size:15px;}
-.sparkle.s4{top:56%;right:10%;animation-delay:1.2s;font-size:13px;}
-.sparkle.s5{top:70%;left:12%;animation-delay:7s;font-size:17px;}
-.sparkle.s6{top:84%;right:18%;animation-delay:3.8s;font-size:14px;}
-.sparkle.s7{top:30%;left:82%;animation-delay:8.5s;font-size:11px;}
-.sparkle.s8{top:92%;left:45%;animation-delay:6s;font-size:15px;}
-
-@keyframes floatSparkle{
-  0%{transform:translateY(0) scale(0.6) rotate(0deg);opacity:0;}
-  25%{opacity:0.85;transform:translateY(-16px) scale(1.1) rotate(45deg);}
-  50%{opacity:0.3;transform:translateY(-32px) scale(0.85) rotate(90deg);}
-  75%{opacity:0.95;transform:translateY(-48px) scale(1.2) rotate(135deg);}
-  100%{transform:translateY(-65px) scale(0.4) rotate(180deg);opacity:0;}
+body.theme-floral {
+  --bg: #faf5f0;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --txt: #2d3748;
+  --mut: #718096;
+  --acc: #4a6741;
+  --accl: #edf2eb;
+  --gold: #c5a059;
+  --gold-light: #fdf6cc;
+  --gold-glow: rgba(197, 160, 89, 0.4);
+  --gold-border: rgba(197, 160, 89, 0.55);
+  --gold-dash: rgba(197, 160, 89, 0.35);
+  --bdr: rgba(226, 220, 213, 0.9);
+  --fh: 'Playfair Display', serif;
+  --rad: 22px;
 }
 
-.app{
-  width:100%;
-  max-width:440px;
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-  margin:0 auto;
-  position:relative;
-  z-index:1;
+body.theme-blacktie {
+  --bg: #0b0d11;
+  --card-bg: rgba(22, 25, 32, 0.92);
+  --txt: #f8fafc;
+  --mut: #94a3b8;
+  --acc: #d4af37;
+  --accl: rgba(212, 175, 55, 0.16);
+  --gold: #e6c86e;
+  --gold-light: #fff2b2;
+  --gold-glow: rgba(212, 175, 55, 0.5);
+  --gold-border: rgba(212, 175, 55, 0.6);
+  --gold-dash: rgba(212, 175, 55, 0.35);
+  --bdr: rgba(51, 58, 69, 0.85);
+  --fh: 'Cormorant Garamond', Georgia, serif;
+  --rad: 16px;
+  --shd: 0 20px 48px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.28);
 }
-.hdr{text-align:center;padding:22px 14px 8px;}
-.motif{display:flex;justify-content:center;margin-bottom:6px;}
-.motif svg{width:38px;height:38px;fill:none;stroke:var(--acc);stroke-width:1.5;filter:drop-shadow(0 0 6px var(--gold-glow));}
-.wlcm{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;}
-.cpl{font-family:var(--fh);font-size:1.95rem;font-weight:600;margin:4px 0;line-height:1.2;}
-.dtl{font-size:.82rem;color:var(--mut);display:flex;justify-content:center;gap:6px;}
 
-/* Frosted Glassmorphism Containers */
-.card{
-  background:var(--card);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  border-radius:var(--rad);
-  border:1.5px solid var(--bdr);
-  box-shadow:var(--shd);
-  padding:18px;
-  animation:goldPulseSearch 5s infinite ease-in-out;
-  transition:border-color .3s,box-shadow .3s;
+body.theme-rustic {
+  --bg: #f6f0e6;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --txt: #3e2723;
+  --mut: #795548;
+  --acc: #b0573c;
+  --accl: #f8ede9;
+  --gold: #b8860b;
+  --gold-light: #fae4a8;
+  --gold-glow: rgba(184, 134, 11, 0.4);
+  --gold-border: rgba(184, 134, 11, 0.55);
+  --gold-dash: rgba(184, 134, 11, 0.35);
+  --bdr: rgba(222, 214, 205, 0.9);
+  --fh: 'Cormorant Garamond', serif;
+  --rad: 16px;
 }
-@keyframes goldPulseSearch{
-  0%,100%{
-    box-shadow:var(--shd);
-    border-color:var(--bdr);
+
+body.theme-classic {
+  --bg: #f8f7f4;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --txt: #14213d;
+  --mut: #4a5568;
+  --acc: #1d3557;
+  --accl: #e8eef6;
+  --gold: #c5a059;
+  --gold-light: #fbf5b7;
+  --gold-glow: rgba(197, 160, 89, 0.4);
+  --gold-border: rgba(197, 160, 89, 0.55);
+  --gold-dash: rgba(197, 160, 89, 0.35);
+  --bdr: rgba(222, 216, 206, 0.9);
+  --fh: 'Playfair Display', serif;
+  --rad: 18px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: var(--fb);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.5;
+  padding: 16px 14px 44px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Dynamic Floating Particles & Glowing Stardust */
+.particles-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.shimmer-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(48px);
+  opacity: 0.42;
+  animation: floatOrb 18s infinite ease-in-out alternate;
+  will-change: transform, opacity;
+}
+.shimmer-orb.o1 {
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.5) 0%, rgba(255, 230, 160, 0.15) 60%, transparent 80%);
+  top: -80px; left: -80px;
+}
+.shimmer-orb.o2 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(197, 160, 89, 0.38) 0%, rgba(212, 175, 55, 0.12) 60%, transparent 80%);
+  bottom: 6%; right: -90px;
+  animation-duration: 24s;
+  animation-delay: -7s;
+}
+.shimmer-orb.o3 {
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, rgba(230, 200, 110, 0.4) 0%, transparent 75%);
+  top: 42%; left: 20%;
+  animation-duration: 16s;
+  animation-delay: -11s;
+}
+@keyframes floatOrb {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(32px, 46px, 0) scale(1.14); }
+  100% { transform: translate3d(-24px, 26px, 0) scale(0.94); }
+}
+
+.sparkle {
+  position: absolute;
+  color: var(--gold);
+  font-size: 14px;
+  opacity: 0;
+  user-select: none;
+  animation: floatSparkle 11s infinite ease-in-out;
+  text-shadow: 0 0 8px var(--gold-glow);
+  will-change: transform, opacity;
+}
+.sparkle.s1 { top: 10%; left: 8%; animation-delay: 0s; font-size: 18px; }
+.sparkle.s2 { top: 20%; right: 10%; animation-delay: 2.2s; font-size: 13px; }
+.sparkle.s3 { top: 35%; left: 14%; animation-delay: 4.8s; font-size: 16px; }
+.sparkle.s4 { top: 52%; right: 8%; animation-delay: 1.5s; font-size: 14px; }
+.sparkle.s5 { top: 68%; left: 10%; animation-delay: 6.8s; font-size: 18px; }
+.sparkle.s6 { top: 82%; right: 15%; animation-delay: 3.5s; font-size: 15px; }
+.sparkle.s7 { top: 28%; left: 85%; animation-delay: 8.2s; font-size: 12px; }
+.sparkle.s8 { top: 90%; left: 42%; animation-delay: 5.8s; font-size: 16px; }
+.sparkle.s9 { top: 15%; left: 50%; animation-delay: 9.1s; font-size: 14px; }
+.sparkle.s10 { top: 76%; right: 40%; animation-delay: 4.2s; font-size: 13px; }
+
+@keyframes floatSparkle {
+  0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
+  25% { opacity: 0.9; transform: translateY(-18px) scale(1.15) rotate(45deg); }
+  50% { opacity: 0.35; transform: translateY(-36px) scale(0.85) rotate(90deg); }
+  75% { opacity: 0.95; transform: translateY(-54px) scale(1.25) rotate(135deg); }
+  100% { transform: translateY(-72px) scale(0.4) rotate(180deg); opacity: 0; }
+}
+
+/* =========================================================
+   WEDDING INVITATION CARD CONTAINER
+   ========================================================= */
+.app {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ornate Wedding Card Shell */
+.wedding-invitation-shell {
+  background: var(--card-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid var(--gold-border);
+  border-radius: var(--rad);
+  box-shadow: var(--shd);
+  padding: 26px 20px 22px;
+  position: relative;
+  text-align: center;
+  outline: 1px dashed var(--gold-dash);
+  outline-offset: -6px;
+  animation: cardFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes cardFadeIn {
+  0% { opacity: 0; transform: translateY(18px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* SVG Corner Filigree Flourishes */
+.corner-filigree {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  stroke: var(--gold);
+  fill: none;
+  opacity: 0.85;
+}
+.corner-filigree.tl { top: 10px; left: 10px; }
+.corner-filigree.tr { top: 10px; right: 10px; transform: scaleX(-1); }
+.corner-filigree.bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+.corner-filigree.br { bottom: 10px; right: 10px; transform: scale(-1); }
+
+/* Royal Wax Seal & Crest */
+.wax-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c5a059 0%, #fbf5b7 50%, #b38728 100%);
+  box-shadow: 0 4px 14px rgba(197, 160, 89, 0.45), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  margin-bottom: 8px;
+  position: relative;
+}
+.wax-ring {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(120, 85, 20, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 80%);
+}
+.wax-icon {
+  font-size: 1.3rem;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+}
+
+.card-kicker {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.wlcm {
+  font-family: var(--fb);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mut);
+  font-weight: 600;
+}
+
+/* Gold Foil Gradient Typography for Couple Names */
+.cpl {
+  font-family: var(--fh);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 6px 0 8px;
+  line-height: 1.15;
+  background: linear-gradient(135deg, #a67c1e 0%, #ecd07a 28%, #faebaa 50%, #d8a22a 72%, #9b7218 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: foilShine 7s linear infinite;
+  text-shadow: 0 2px 10px rgba(197, 160, 89, 0.15);
+}
+@keyframes foilShine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Calligraphic Divider */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 6px 0 10px;
+}
+.ornament-line {
+  height: 1px;
+  width: 45px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.ornament-gem {
+  color: var(--gold);
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.dtl {
+  font-size: 0.84rem;
+  color: var(--mut);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.dtl-bullet {
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   SEARCH GUESTBOOK CARD
+   ========================================================= */
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--rad);
+  border: 1.5px solid var(--gold-border);
+  box-shadow: var(--shd);
+  padding: 20px 18px;
+  position: relative;
+  outline: 1px dashed var(--gold-dash);
+  outline-offset: -5px;
+  animation: goldPulseSearch 5s infinite ease-in-out;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+@keyframes goldPulseSearch {
+  0%, 100% {
+    box-shadow: var(--shd);
+    border-color: var(--gold-border);
   }
-  50%{
-    box-shadow:0 14px 34px -4px rgba(0,0,0,0.08), 0 0 22px var(--gold-glow);
-    border-color:rgba(197,160,89,0.5);
+  50% {
+    box-shadow: 0 16px 42px -4px rgba(0, 0, 0, 0.09), 0 0 26px var(--gold-glow);
+    border-color: rgba(197, 160, 89, 0.85);
   }
-}
-.srch-wrap{position:relative;display:flex;align-items:center;}
-.srch-icon{position:absolute;left:13px;width:18px;height:18px;stroke:var(--mut);stroke-width:2;fill:none;pointer-events:none;}
-.srch-inp{
-  width:100%;
-  padding:13px 40px;
-  border:1.5px solid var(--bdr);
-  border-radius:calc(var(--rad) - 4px);
-  background:rgba(255,255,255,0.7);
-  color:var(--txt);
-  font-size:1rem;
-  font-family:inherit;
-  outline:none;
-  transition:.25s;
-}
-body.theme-blacktie .srch-inp{background:rgba(17,19,23,0.7);}
-.srch-inp:focus{
-  border-color:var(--gold);
-  background:var(--card);
-  box-shadow:0 0 0 3px var(--gold-glow);
-}
-.clr-btn{position:absolute;right:10px;background:none;border:none;color:var(--mut);font-size:1.3rem;cursor:pointer;display:none;padding:4px;}
-.clr-btn.act{display:block;}
-.hint{font-size:.74rem;color:var(--mut);margin-top:8px;text-align:center;}
-.res-list{display:flex;flex-direction:column;gap:8px;max-height:360px;overflow-y:auto;margin-top:12px;}
-.g-btn{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px 14px;
-  background:var(--card);
-  border:1px solid var(--bdr);
-  border-radius:var(--rad);
-  cursor:pointer;
-  text-align:left;
-  font-family:inherit;
-  transition:.2s;
-  box-shadow:0 2px 6px rgba(0,0,0,0.02);
-}
-.g-btn:hover,.g-btn:active{
-  border-color:var(--gold);
-  background:var(--accl);
-  transform:translateY(-1px);
-}
-.g-name{font-size:1rem;font-weight:600;color:var(--txt);}
-.g-grp{font-size:.75rem;color:var(--mut);}
-.badge{background:var(--accl);color:var(--acc);font-size:.78rem;font-weight:600;padding:4px 9px;border-radius:16px;white-space:nowrap;}
-
-/* Seating Pass Ticket & 3D Luxury Card Reveal */
-.ticket{
-  display:none;
-  flex-direction:column;
-  gap:16px;
-  perspective:1200px;
-}
-.ticket.act{display:flex;}
-.t-card{
-  background:var(--card);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  border-radius:var(--rad);
-  border:2px solid var(--acc);
-  box-shadow:var(--shd);
-  padding:24px 20px;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-  animation:luxuryCardFlip 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change:transform,opacity;
-}
-@keyframes luxuryCardFlip{
-  0%{
-    opacity:0;
-    transform:perspective(1000px) rotateX(-22deg) translateY(34px) scale(0.94);
-  }
-  65%{
-    transform:perspective(1000px) rotateX(3deg) translateY(-2px) scale(1.015);
-  }
-  100%{
-    opacity:1;
-    transform:perspective(1000px) rotateX(0deg) translateY(0) scale(1);
-  }
-}
-/* Shimmering Golden Sheen line sweep */
-.t-card::before{
-  content:'';
-  position:absolute;
-  top:0;left:-120%;width:60%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),rgba(197,160,89,0.28),transparent);
-  transform:skewX(-25deg);
-  animation:ticketSheen 4.2s infinite;
-  pointer-events:none;
-}
-@keyframes ticketSheen{
-  0%,65%{left:-120%;}
-  100%{left:220%;}
 }
 
-.t-wlcm{font-size:.8rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:700;}
-.t-name{font-family:var(--fh);font-size:1.8rem;font-weight:700;margin:6px 0 14px;color:var(--txt);}
-.t-div{border-top:1px dashed var(--bdr);margin:12px 0;}
-.t-tbl-box{
-  background:var(--accl);
-  border-radius:calc(var(--rad) - 4px);
-  padding:14px;margin:8px 0;
-  border:1px solid rgba(197,160,89,0.25);
-  box-shadow:inset 0 0 12px rgba(197,160,89,0.08);
+.srch-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
-.t-tbl-sub{font-size:.78rem;color:var(--mut);text-transform:uppercase;letter-spacing:.1em;font-weight:600;}
-.t-tbl-main{font-family:var(--fh);font-size:2.1rem;font-weight:800;color:var(--acc);margin-top:3px;}
-.t-pty{margin-top:12px;text-align:left;background:rgba(255,255,255,0.6);border-radius:8px;padding:10px 12px;font-size:.8rem;}
-body.theme-blacktie .t-pty{background:rgba(17,19,23,0.6);}
-.t-pty-hdr{font-weight:600;margin-bottom:4px;color:var(--txt);}
-.t-pty-txt{color:var(--mut);line-height:1.4;}
-.tag{display:inline-flex;align-items:center;gap:4px;font-size:.75rem;padding:3px 9px;border-radius:12px;background:var(--bg);border:1px solid var(--bdr);color:var(--mut);margin-top:10px;}
+.srch-icon {
+  position: absolute;
+  left: 13px;
+  width: 18px;
+  height: 18px;
+  stroke: var(--gold);
+  stroke-width: 2.2;
+  fill: none;
+  pointer-events: none;
+}
+.srch-inp {
+  width: 100%;
+  padding: 13px 40px;
+  border: 1.5px solid var(--bdr);
+  border-radius: calc(var(--rad) - 6px);
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--txt);
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.25s;
+}
+body.theme-blacktie .srch-inp { background: rgba(17, 19, 23, 0.75); }
+.srch-inp:focus {
+  border-color: var(--gold);
+  background: var(--card-bg);
+  box-shadow: 0 0 0 3.5px var(--gold-glow);
+}
+.clr-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--mut);
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: none;
+  padding: 4px;
+}
+.clr-btn.act { display: block; }
+.hint {
+  font-size: 0.76rem;
+  color: var(--mut);
+  margin-top: 9px;
+  text-align: center;
+}
+.res-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 360px;
+  overflow-y: auto;
+  margin-top: 14px;
+}
+.g-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--bdr);
+  border-radius: calc(var(--rad) - 6px);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+.g-btn:hover, .g-btn:active {
+  border-color: var(--gold);
+  background: var(--accl);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--gold-glow);
+}
+.g-name {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--txt);
+}
+.g-grp {
+  font-size: 0.76rem;
+  color: var(--mut);
+  margin-top: 2px;
+}
+.badge {
+  background: var(--accl);
+  color: var(--acc);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: 16px;
+  white-space: nowrap;
+}
 
-.m-card{
-  background:var(--card);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  border-radius:var(--rad);
-  border:1.5px solid var(--bdr);
-  box-shadow:var(--shd);
-  padding:16px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
+/* =========================================================
+   ROYAL GOLD TICKET SEATING PASS
+   ========================================================= */
+.ticket {
+  display: none;
+  flex-direction: column;
+  gap: 18px;
+  perspective: 1200px;
 }
-.m-hdr{display:flex;justify-content:space-between;align-items:center;font-size:.86rem;font-weight:700;}
-.m-lgd{display:flex;gap:8px;font-size:.72rem;color:var(--mut);}
-.dot{width:7px;height:7px;border-radius:50%;display:inline-block;}
-.dot-u{background:var(--acc);}
-.dot-t{background:#cbd5e1;}
-.map-box{width:100%;height:270px;background:var(--bg);border-radius:calc(var(--rad) - 6px);border:1px solid var(--bdr);overflow:hidden;}
-.map-box svg{width:100%;height:100%;display:block;}
+.ticket.act { display: flex; }
+
+.t-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--rad);
+  border: 2px solid var(--gold);
+  box-shadow: var(--shd);
+  padding: 26px 22px 22px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  outline: 1px dashed var(--gold-dash);
+  outline-offset: -7px;
+  animation: luxuryCardFlip 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+@keyframes luxuryCardFlip {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-24deg) translateY(38px) scale(0.92);
+  }
+  65% {
+    transform: perspective(1000px) rotateX(3deg) translateY(-2px) scale(1.018);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0) scale(1);
+  }
+}
+
+/* Foil Sheen Sweep across Ticket */
+.t-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -140%; width: 70%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), rgba(197, 160, 89, 0.35), transparent);
+  transform: skewX(-25deg);
+  animation: ticketSheen 4.2s infinite;
+  pointer-events: none;
+}
+@keyframes ticketSheen {
+  0%, 65% { left: -140%; }
+  100% { left: 240%; }
+}
+
+.t-banner {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: #fff;
+  background: linear-gradient(135deg, #c5a059 0%, #b38728 100%);
+  padding: 4px 14px;
+  border-radius: 14px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(197, 160, 89, 0.4);
+  margin-bottom: 8px;
+}
+.t-name {
+  font-family: var(--fh);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 6px 0 12px;
+  color: var(--txt);
+}
+.t-div {
+  border-top: 1.5px dashed var(--gold);
+  margin: 14px 0;
+  position: relative;
+}
+.t-div::after {
+  content: '❖';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card-bg);
+  padding: 0 8px;
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+
+/* Table Crest Plaque */
+.t-tbl-box {
+  background: var(--accl);
+  border-radius: calc(var(--rad) - 6px);
+  padding: 16px;
+  margin: 10px 0;
+  border: 1.5px solid rgba(197, 160, 89, 0.4);
+  box-shadow: inset 0 0 16px rgba(197, 160, 89, 0.12);
+  position: relative;
+}
+.t-tbl-sub {
+  font-size: 0.78rem;
+  color: var(--mut);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+.t-tbl-main {
+  font-family: var(--fh);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--acc);
+  margin-top: 4px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.t-pty {
+  margin-top: 14px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--bdr);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 0.82rem;
+}
+body.theme-blacktie .t-pty { background: rgba(17, 19, 23, 0.7); }
+.t-pty-hdr {
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--txt);
+}
+.t-pty-txt {
+  color: var(--mut);
+  line-height: 1.5;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  padding: 5px 13px;
+  border-radius: 14px;
+  background: var(--bg);
+  border: 1.5px solid var(--gold-border);
+  color: var(--txt);
+  font-weight: 600;
+  margin-top: 12px;
+  box-shadow: 0 2px 6px rgba(197, 160, 89, 0.15);
+}
+
+/* =========================================================
+   VENUE MINI-MAP LOCATOR
+   ========================================================= */
+.m-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--rad);
+  border: 1.5px solid var(--gold-border);
+  box-shadow: var(--shd);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  outline: 1px dashed var(--gold-dash);
+  outline-offset: -5px;
+}
+.m-hdr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.m-lgd {
+  display: flex;
+  gap: 10px;
+  font-size: 0.74rem;
+  color: var(--mut);
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-u { background: var(--acc); box-shadow: 0 0 6px var(--acc); }
+.dot-t { background: #cbd5e1; }
+.map-box {
+  width: 100%;
+  height: 275px;
+  background: var(--bg);
+  border-radius: calc(var(--rad) - 6px);
+  border: 1.5px solid var(--bdr);
+  overflow: hidden;
+}
+.map-box svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 
 /* Radiant Animated Radar-Glow on Table Beacon */
-.radar-wave{
-  pointer-events:none;
-  transform-box:fill-box;
-  transform-origin:center;
-  animation:radarPulse 2.2s cubic-bezier(0.16,0.7,0.35,1) infinite;
-  will-change:transform,opacity;
+.radar-wave {
+  pointer-events: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: radarPulse 2.2s cubic-bezier(0.16, 0.7, 0.35, 1) infinite;
+  will-change: transform, opacity;
 }
-.radar-wave.rw-2{animation-delay:1.1s;}
-@keyframes radarPulse{
-  0%{transform:scale(0.9);stroke-width:2.4px;opacity:0.95;}
-  60%{opacity:0.45;}
-  100%{transform:scale(2.4);stroke-width:0.2px;opacity:0;}
-}
-
-.map-th{stroke:var(--gold)!important;stroke-width:2.4px!important;animation:glw 1.8s infinite;}
-@keyframes glw{0%,100%{opacity:.95;}50%{opacity:.45;}}
-.pin-b{animation:pnb 1.1s infinite alternate ease-in-out;}
-@keyframes pnb{from{transform:translateY(0);}to{transform:translateY(-3.5px);}}
-
-/* Celebratory Sparkle Burst */
-.sparkle-burst-wrap{
-  position:absolute;
-  top:32%;
-  left:50%;
-  width:0;height:0;
-  pointer-events:none;
-  z-index:20;
-}
-.burst-particle{
-  position:absolute;
-  top:0;left:0;
-  user-select:none;
-  pointer-events:none;
-  will-change:transform,opacity;
-  animation:burstParticleAnim 1s cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
-}
-@keyframes burstParticleAnim{
-  0%{
-    transform:translate(-50%, -50%) scale(0.2) rotate(0deg);
-    opacity:1;
-  }
-  65%{
-    opacity:1;
-    transform:translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.25) rotate(180deg);
-  }
-  100%{
-    opacity:0;
-    transform:translate(calc(-50% + var(--tx) * 1.15), calc(-50% + var(--ty) * 1.15)) scale(0.3) rotate(270deg);
-  }
+.radar-wave.rw-2 { animation-delay: 1.1s; }
+@keyframes radarPulse {
+  0% { transform: scale(0.9); stroke-width: 2.6px; opacity: 0.95; }
+  60% { opacity: 0.45; }
+  100% { transform: scale(2.5); stroke-width: 0.2px; opacity: 0; }
 }
 
-.b-btn{
-  display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:12px;
-  background:var(--card);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  border:1.5px solid var(--bdr);
-  border-radius:var(--rad);
-  color:var(--txt);
-  font-weight:600;font-size:.88rem;cursor:pointer;font-family:inherit;
-  transition:.2s;
+.map-th {
+  stroke: var(--gold) !important;
+  stroke-width: 2.4px !important;
+  animation: glw 1.8s infinite;
 }
-.b-btn:hover{border-color:var(--acc);color:var(--acc);box-shadow:0 0 10px var(--gold-glow);}
-.ftr{text-align:center;font-size:.72rem;color:var(--mut);margin-top:12px;line-height:1.4;}
+@keyframes glw {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 0.45; }
+}
+.pin-b {
+  animation: pnb 1.1s infinite alternate ease-in-out;
+}
+@keyframes pnb {
+  from { transform: translateY(0); }
+  to { transform: translateY(-4px); }
+}
+
+/* Celebratory Golden Confetti & Sparkle Burst */
+.sparkle-burst-wrap {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 25;
+}
+.burst-particle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: burstParticleAnim 1.1s cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
+}
+@keyframes burstParticleAnim {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+    opacity: 1;
+  }
+  65% {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.3) rotate(190deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--tx) * 1.18), calc(-50% + var(--ty) * 1.18)) scale(0.2) rotate(320deg);
+  }
+}
+
+.b-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid var(--gold-border);
+  border-radius: var(--rad);
+  color: var(--txt);
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.b-btn:hover {
+  border-color: var(--gold);
+  color: var(--acc);
+  box-shadow: 0 0 14px var(--gold-glow);
+  transform: translateY(-1px);
+}
+.ftr {
+  text-align: center;
+  font-size: 0.74rem;
+  color: var(--mut);
+  margin-top: 10px;
+  line-height: 1.45;
+}
 
 /* Mobile Performance Guard & Reduced Motion */
-@media (prefers-reduced-motion: reduce){
-  .particles-bg,.shimmer-orb,.sparkle,.t-card::before,.radar-wave,.pin-b,.card,.burst-particle{
-    animation:none!important;
+@media (prefers-reduced-motion: reduce) {
+  .particles-bg, .shimmer-orb, .sparkle, .t-card::before, .radar-wave, .pin-b, .card, .burst-particle, .cpl {
+    animation: none !important;
   }
-  .t-card{animation:none!important;}
+  .t-card { animation: none !important; }
 }
 </style>
 </head>
 <body class="theme-floral">
+
+<!-- Background Floating Particles -->
 <div class="particles-bg" aria-hidden="true">
   <div class="shimmer-orb o1"></div>
   <div class="shimmer-orb o2"></div>
@@ -453,15 +833,49 @@ body.theme-blacktie .t-pty{background:rgba(17,19,23,0.6);}
   <div class="sparkle s6">✧</div>
   <div class="sparkle s7">✦</div>
   <div class="sparkle s8">★</div>
+  <div class="sparkle s9">✧</div>
+  <div class="sparkle s10">✦</div>
 </div>
+
 <div class="app">
-  <header class="hdr">
-    <div class="motif" id="motif"><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12c0 3.5 1.8 6.6 4.5 8.4L12 22l5.5-1.6C20.2 18.6 22 15.5 22 12c0-5.5-4.5-10-10-10zm0 3a7 7 0 110 14 7 7 0 010-14z"/></svg></div>
+
+  <!-- LUXURY WEDDING INVITATION CARD HEADER -->
+  <div class="wedding-invitation-shell">
+    <svg class="corner-filigree tl" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+    <svg class="corner-filigree tr" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+    <svg class="corner-filigree bl" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+    <svg class="corner-filigree br" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+
+    <div class="wax-seal">
+      <div class="wax-ring">
+        <span class="wax-icon">⚜️</span>
+      </div>
+    </div>
+    
+    <div class="card-kicker" id="uKicker">THE HONOR OF YOUR PRESENCE</div>
     <div class="wlcm" id="uWlcm">Welcome to the Wedding of</div>
     <h1 class="cpl" id="uCpl">Sophia &amp; Liam</h1>
-    <div class="dtl"><span id="uDate">Saturday, October 24, 2026</span><span>•</span><span id="uVnu">The Grand Orangery</span></div>
-  </header>
+    
+    <div class="ornament-divider">
+      <span class="ornament-line"></span>
+      <span class="ornament-gem">❖</span>
+      <span class="ornament-line"></span>
+    </div>
+
+    <div class="dtl">
+      <span id="uDate">Saturday, October 24, 2026</span>
+      <span class="dtl-bullet">•</span>
+      <span id="uVnu">The Grand Glasshouse &amp; Orangery</span>
+    </div>
+  </div>
+
+  <!-- SEARCH GUESTBOOK SECTION -->
   <div id="secSearch" class="card">
+    <svg class="corner-filigree tl" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+    <svg class="corner-filigree tr" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+    <svg class="corner-filigree bl" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+    <svg class="corner-filigree br" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+
     <div class="srch-wrap">
       <svg class="srch-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="text" id="sInp" class="srch-inp" placeholder="Search your first or last name..." autocomplete="off">
@@ -470,29 +884,55 @@ body.theme-blacktie .t-pty{background:rgba(17,19,23,0.6);}
     <div class="hint" id="uHint">Type 2 or more letters to find your seating details</div>
     <div class="res-list" id="resList"></div>
   </div>
+
+  <!-- ROYAL GOLD TICKET SEATING PASS -->
   <div id="secTicket" class="ticket">
     <div class="t-card">
-      <div class="t-wlcm">Seating Pass</div>
-      <h2 class="t-name" id="tName">Guest</h2>
+      <svg class="corner-filigree tl" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+      <svg class="corner-filigree tr" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+      <svg class="corner-filigree bl" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+      <svg class="corner-filigree br" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+
+      <div class="t-banner">✦ OFFICIAL SEATING PASS ✦</div>
+      <h2 class="t-name" id="tName">Guest Name</h2>
       <div class="t-div"></div>
+      
       <div class="t-tbl-box">
         <div class="t-tbl-sub" id="uSeatedAt">You are seated at</div>
         <div class="t-tbl-main" id="tTbl">Table 1</div>
       </div>
+      
       <div class="t-pty" id="tPtyBox">
         <div class="t-pty-hdr" id="uPartyHdr">Seated with your party:</div>
         <div class="t-pty-txt" id="tPtyNames"></div>
       </div>
+      
       <div><span class="tag"><span id="tMealIcn">🥩</span> <span id="tMealTxt">Beef</span></span></div>
     </div>
+
+    <!-- VENUE MINI-MAP -->
     <div class="m-card">
-      <div class="m-hdr"><span id="uMapHdr">Floorplan &amp; Table Locator</span><div class="m-lgd"><span><i class="dot dot-u"></i> <span id="uLegU">Your Table</span></span><span><i class="dot dot-t"></i> Tables</span></div></div>
+      <svg class="corner-filigree tl" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+      <svg class="corner-filigree tr" viewBox="0 0 32 32"><path d="M2,30 L2,10 C2,5.5 5.5,2 10,2 L30,2 M6,30 L6,12 C6,8.5 8.5,6 12,6 L30,6 M12,12 C16,16 16,16 20,12 M12,12 C8,8 8,8 12,4 M12,12 C16,8 16,8 20,4"/></svg>
+      <div class="m-hdr">
+        <span id="uMapHdr">Floorplan &amp; Table Locator</span>
+        <div class="m-lgd">
+          <span><i class="dot dot-u"></i> <span id="uLegU">Your Table</span></span>
+          <span><i class="dot dot-t"></i> Tables</span>
+        </div>
+      </div>
       <div class="map-box"><svg id="mapSvg" viewBox="0 0 100 100"></svg></div>
     </div>
+
     <button id="backBtn" class="b-btn">&larr; <span id="uBack">Search Another Guest</span></button>
   </div>
-  <footer class="ftr"><b>100% Serverless &amp; Private</b><br>Decoded entirely on your device with zero cloud database costs.</footer>
+
+  <footer class="ftr">
+    <b>100% Serverless &amp; Private</b><br>Decoded entirely on your device with zero cloud database costs.
+  </footer>
+
 </div>
+
 <script>
 var LZ=(function(){var f=String.fromCharCode,K='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$',R={};for(var i=0;i<K.length;i++)R[K.charAt(i)]=i;return{decompress:function(s){if(!s)return'';s=s.replace(/ /g,'+');var L=s.length,p=32,idx=1,gv=function(i){return R[s.charAt(i)]},v=gv(0),D=[],N,E=4,S=4,B=3,e='',res=[],w,bits,c;for(var i=0;i<3;i++)D[i]=i;var gb=function(n){var b=0,pw=1;while(pw!=Math.pow(2,n)){var rb=v&p;p>>=1;if(!p){p=32;v=gv(idx++)}b|=(rb>0?1:0)*pw;pw<<=1}return b};var nx=gb(2);c=(nx===0?f(gb(8)):(nx===1?f(gb(16)):''));if(!c)return'';D[3]=c;w=c;res.push(c);while(idx<=L+2){var cd=gb(B);if(cd===0){D[S++]=f(gb(8));cd=S-1;E--}else if(cd===1){D[S++]=f(gb(16));cd=S-1;E--}else if(cd===2)return res.join('');if(!E){E=Math.pow(2,B);B++}var en=D[cd]?D[cd]:(cd===S?w+w.charAt(0):null);if(!en)return null;res.push(en);D[S++]=w+en.charAt(0);E--;w=en;if(!E){E=Math.pow(2,B);B++}}return res.join('')}}})();
 var TR={
@@ -671,36 +1111,58 @@ var h='';M.slice(0,10).forEach(function(item){
 });
 list.innerHTML=h;
 }
+function playLuxuryHarpChime(){
+  try{
+    var AudioCtx=window.AudioContext||window.webkitAudioContext;
+    if(!AudioCtx) return;
+    var ctx=new AudioCtx();
+    var notes=[523.25, 659.25, 783.99, 1046.50];
+    notes.forEach(function(freq,idx){
+      var osc=ctx.createOscillator();
+      var gain=ctx.createGain();
+      osc.type='sine';
+      osc.frequency.setValueAtTime(freq, ctx.currentTime + idx*0.08);
+      gain.gain.setValueAtTime(0.06, ctx.currentTime + idx*0.08);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + idx*0.08 + 0.55);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime + idx*0.08);
+      osc.stop(ctx.currentTime + idx*0.08 + 0.55);
+    });
+  }catch(e){}
+}
+
 function triggerSparkleBurst(container){
   if(!container) return;
   var oldB=container.querySelector('.sparkle-burst-wrap');
   if(oldB&&oldB.parentNode) oldB.parentNode.removeChild(oldB);
   var burst=document.createElement('div');
   burst.className='sparkle-burst-wrap';
-  var symbols=['✦','★','✧','•','✨','✦'];
-  var colors=['#f59e0b','#d97706','#fbbf24','#c5a059','#eab308'];
-  for(var i=0;i<18;i++){
+  var symbols=['✦','★','✧','•','✨','✦','⚜️','★','✧','•'];
+  var colors=['#f59e0b','#d97706','#fbbf24','#c5a059','#eab308','#fde68a'];
+  for(var i=0;i<26;i++){
     var p=document.createElement('span');
     p.className='burst-particle';
     p.textContent=symbols[i%symbols.length];
-    var angle=(i/18)*360+(Math.random()*20-10);
+    var angle=(i/26)*360+(Math.random()*24-12);
     var rad=angle*(Math.PI/180);
-    var dist=60+Math.random()*70;
+    var dist=65+Math.random()*85;
     var tx=Math.cos(rad)*dist;
     var ty=Math.sin(rad)*dist;
     p.style.setProperty('--tx',tx+'px');
     p.style.setProperty('--ty',ty+'px');
     p.style.color=colors[i%colors.length];
-    p.style.fontSize=(10+Math.random()*12)+'px';
+    p.style.fontSize=(10+Math.random()*14)+'px';
     burst.appendChild(p);
   }
   container.appendChild(burst);
   setTimeout(function(){
     if(burst.parentNode) burst.parentNode.removeChild(burst);
-  },1200);
+  },1400);
 }
 
 window.pickG=function(idx){
+playLuxuryHarpChime();
 var g=G_LIST[idx];if(!g)return;
 document.getElementById('tName').textContent=g.name;
 document.getElementById('tTbl').textContent=g.tableName;
@@ -801,5 +1263,7 @@ window.addEventListener('message',function(e){
   }
 });
 </script>
+</body>
+</html>
 </body>
 </html>
