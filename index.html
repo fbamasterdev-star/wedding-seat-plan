@@ -32,6 +32,7 @@
 <style>
 :root {
   --bg: #faf7f2;
+  --card: #ffffff;
   --card-bg: rgba(255, 255, 255, 0.9);
   --txt: #1e293b;
   --mut: #64748b;
@@ -52,6 +53,7 @@
 
 body.theme-minimalist {
   --bg: #f8fafc;
+  --card: #ffffff;
   --card-bg: rgba(255, 255, 255, 0.92);
   --txt: #0f172a;
   --mut: #64748b;
@@ -69,6 +71,7 @@ body.theme-minimalist {
 
 body.theme-floral {
   --bg: #faf5f0;
+  --card: #ffffff;
   --card-bg: rgba(255, 255, 255, 0.9);
   --txt: #2d3748;
   --mut: #718096;
@@ -86,6 +89,7 @@ body.theme-floral {
 
 body.theme-blacktie {
   --bg: #0b0d11;
+  --card: #1e2430;
   --card-bg: rgba(22, 25, 32, 0.92);
   --txt: #f8fafc;
   --mut: #94a3b8;
@@ -104,6 +108,7 @@ body.theme-blacktie {
 
 body.theme-rustic {
   --bg: #f6f0e6;
+  --card: #ffffff;
   --card-bg: rgba(255, 255, 255, 0.9);
   --txt: #3e2723;
   --mut: #795548;
@@ -121,6 +126,7 @@ body.theme-rustic {
 
 body.theme-classic {
   --bg: #f8f7f4;
+  --card: #ffffff;
   --card-bg: rgba(255, 255, 255, 0.9);
   --txt: #14213d;
   --mut: #4a5568;
@@ -943,8 +949,24 @@ de:{w:'Willkommen zur Hochzeit von',s:'Vor- oder Nachnamen eingeben...',h:'Geben
 it:{w:'Benvenuti al Matrimonio di',s:'Cerca il tuo nome o cognome...',h:'Digita almeno 2 lettere',a:'Sei al tavolo',p:'Seduti al tuo tavolo:',m:'Mappa della Sala & Tavoli',u:'Il Tuo Tavolo',b:'Cerca un Altro Ospite',n:'Nessun invitato trovato per "{q}".'},
 ur:{w:'خوش آمدید | شادی مبارک',s:'اپنا نام تلاش کریں...',h:'اپنی میز جاننے کے لیے نام درج کریں',a:'آپ کی میز:',p:'آپ کی میز پر فیملی:',m:'ہال کا نقشہ اور ٹیبل',u:'آپ کی میز',b:'دوسرا نام تلاش کریں',n:'کوئی نام نہیں ملا "{q}".'}
 };
-var ST={"c": "Sophia & Liam", "d": "Saturday, October 24, 2026", "v": "The Grand Glasshouse & Orangery", "th": "floral", "l": "en", "t": [["t_sweetheart", "Sweetheart Table", 50, 19, "s"], ["t1", "Table 1 (Peony)", 21, 35, "r"], ["t2", "Table 2 (Rosewood)", 50, 35, "r"], ["t3", "Table 3 (Orchid)", 79, 35, "r"], ["t4", "Table 4 (Lavender)", 21, 58, "r"], ["t5", "Table 5 (Jasmine)", 79, 58, "r"], ["t6", "Table 6 (Magnolia)", 23, 79, "b"], ["t7", "Table 7 (Camellia)", 77, 79, "b"], ["t8", "Table 8 (Gardenia)", 35, 46, "r"], ["t9", "Table 9 (Hydrangea)", 65, 46, "r"], ["t10", "Table 10 (Dahlia)", 50, 71, "r"], ["t11", "Table 11 (Blossom)", 50, 86, "r"]], "o": [["dancefloor", 50, 51, 21, 21, "Dance Floor"], ["stage", 50, 9, 27, 9, "Grand Stage & Live Band"], ["dj", 81, 17, 8, 9, "DJ Booth"], ["bar", 12, 17, 12, 10, "Cocktail Bar"], ["buffet", 90, 49, 9, 21, "Buffet Station"], ["entrance", 50, 94, 17, 5, "Main Entrance"], ["pillar", 29, 28, 3, 4, "Pillar A"], ["pillar", 71, 28, 3, 4, "Pillar B"]], "g": [["Sophia Montgomery", "t_sweetheart", "Bride & Groom", "beef"], ["Liam Vance", "t_sweetheart", "Bride & Groom", "fish"], ["Eleanor Montgomery", "t1", "Montgomery Family", "vegan"], ["Arthur Montgomery", "t1", "Montgomery Family", "vegetarian"], ["Beatrice Montgomery", "t1", "Montgomery Family", "kids"], ["Henry Montgomery", "t1", "Montgomery Family", "beef"], ["Clara Vance", "t1", "Montgomery Family", "chicken"], ["Marcus Vance", "t1", "Montgomery Family", "fish"], ["Julian Vance", "t1", "Montgomery Family", "vegan"], ["Julian Vance", "t1", "Montgomery Family", "vegetarian"], ["Isabella Garcia", "t1", "Montgomery Family", "kids"], ["Mateo Garcia", "t1", "Montgomery Family", "beef"], ["Camila Garcia", "t2", "Vance Family", "chicken"], ["Sebastian Garcia", "t2", "Vance Family", "fish"], ["Olivia Chen", "t2", "Vance Family", "vegan"], ["Lucas Chen", "t2", "Vance Family", "vegetarian"], ["Emma Smith", "t2", "Vance Family", "kids"], ["Noah Smith", "t2", "Vance Family", "beef"], ["Ava Johnson", "t2", "Vance Family", "chicken"], ["Oliver Johnson", "t2", "Vance Family", "fish"], ["Charlotte Williams", "t2", "Vance Family", "vegan"], ["Elijah Williams", "t2", "Vance Family", "vegetarian"], ["Amelia Brown", "t3", "Vance Relatives", "kids"], ["James Brown", "t3", "Vance Relatives", "beef"], ["Harper Jones", "t3", "Vance Relatives", "chicken"], ["William Jones", "t3", "Vance Relatives", "fish"], ["Evelyn Miller", "t3", "Vance Relatives", "vegan"], ["Benjamin Miller", "t3", "Vance Relatives", "vegetarian"], ["Abigail Davis", "t3", "Vance Relatives", "kids"], ["Alexander Davis", "t3", "Vance Relatives", "beef"], ["Emily Wilson", "t4", "Bridal Party", "chicken"], ["Daniel Wilson", "t4", "Bridal Party", "fish"], ["Elizabeth Anderson", "t4", "Bridal Party", "vegan"], ["Matthew Anderson", "t4", "Bridal Party", "vegetarian"], ["Mila Taylor", "t4", "Bridal Party", "kids"], ["Henry Taylor", "t4", "Bridal Party", "beef"], ["Ella Thomas", "t4", "Bridal Party", "chicken"], ["Jackson Thomas", "t4", "Bridal Party", "fish"], ["Avery Moore", "t5", "University Friends", "vegan"], ["Samuel Moore", "t5", "University Friends", "vegetarian"], ["Sofia Jackson", "t5", "University Friends", "kids"], ["David Jackson", "t5", "University Friends", "beef"], ["Chloe Martin", "t5", "University Friends", "chicken"], ["Joseph Martin", "t5", "University Friends", "fish"], ["Victoria Lee", "t5", "University Friends", "vegan"], ["Carter Lee", "t5", "University Friends", "vegetarian"], ["Grace Perez", "t6", "High School Crew", "kids"], ["Owen Perez", "t6", "High School Crew", "beef"], ["Zoey Thompson", "t6", "High School Crew", "chicken"], ["Wyatt Thompson", "t6", "High School Crew", "fish"], ["Penelope White", "t6", "High School Crew", "vegan"], ["John White", "t6", "High School Crew", "vegetarian"], ["Riley Harris", "t6", "High School Crew", "kids"], ["Jack Harris", "t6", "High School Crew", "beef"], ["Nora Sanchez", "t6", "High School Crew", "chicken"], ["Luke Sanchez", "t6", "High School Crew", "fish"], ["Lily Clark", "t6", "High School Crew", "vegan"], ["Jayden Clark", "t6", "High School Crew", "vegetarian"], ["Hannah Ramirez", "t7", "Work Colleagues", "kids"], ["Dylan Ramirez", "t7", "Work Colleagues", "beef"], ["Lillian Lewis", "t7", "Work Colleagues", "chicken"], ["Grayson Lewis", "t7", "Work Colleagues", "fish"], ["Addison Robinson", "t7", "Work Colleagues", "vegan"], ["Levi Robinson", "t7", "Work Colleagues", "vegetarian"], ["Aubrey Walker", "t7", "Work Colleagues", "kids"], ["Isaac Walker", "t7", "Work Colleagues", "beef"], ["Ellie Young", "t7", "Work Colleagues", "chicken"], ["Gabriel Young", "t7", "Work Colleagues", "fish"], ["Stella Allen", "t7", "Work Colleagues", "vegan"], ["Julian Allen", "t7", "Work Colleagues", "vegetarian"], ["Natalie King", "t8", "Travel Club", "kids"], ["Anthony King", "t8", "Travel Club", "beef"], ["Zoe Wright", "t8", "Travel Club", "chicken"], ["Jaxon Wright", "t8", "Travel Club", "fish"], ["Leah Scott", "t8", "Travel Club", "vegan"], ["Lincoln Scott", "t8", "Travel Club", "vegetarian"], ["Hazel Torres", "t8", "Travel Club", "kids"], ["Joshua Torres", "t8", "Travel Club", "beef"], ["Violet Nguyen", "t9", "Neighborhood Friends", "chicken"], ["Christopher Nguyen", "t9", "Neighborhood Friends", "fish"], ["Aurora Hill", "t9", "Neighborhood Friends", "vegan"], ["Andrew Hill", "t9", "Neighborhood Friends", "vegetarian"], ["Savannah Flores", "t9", "Neighborhood Friends", "kids"], ["Theodore Flores", "t9", "Neighborhood Friends", "beef"], ["Audrey Green", "t9", "Neighborhood Friends", "chicken"], ["Caleb Green", "t9", "Neighborhood Friends", "fish"], ["Brooklyn Adams", "t10", "VIP Parents Table", "vegan"], ["Ryan Adams", "t10", "VIP Parents Table", "vegetarian"], ["Bella Nelson", "t10", "VIP Parents Table", "kids"], ["Asher Nelson", "t10", "VIP Parents Table", "beef"], ["Claire Baker", "t10", "VIP Parents Table", "chicken"], ["Nathan Baker", "t10", "VIP Parents Table", "fish"], ["Skylar Hall", "t10", "VIP Parents Table", "vegan"], ["Thomas Hall", "t10", "VIP Parents Table", "vegetarian"], ["Lucy Rivera", "t11", "Young Adults", "kids"], ["Leo Rivera", "t11", "Young Adults", "beef"], ["Paisley Campbell", "t11", "Young Adults", "chicken"], ["Isaiah Campbell", "t11", "Young Adults", "fish"], ["Everly Mitchell", "t11", "Young Adults", "vegan"], ["Charles Mitchell", "t11", "Young Adults", "vegetarian"], ["Anna Carter", "t11", "Young Adults", "kids"], ["Josiah Carter", "t11", "Young Adults", "beef"], ["Caroline Roberts", "t11", "Young Adults", "chicken"]]};
+var ST={"c": "Sophia & Liam", "d": "Saturday, October 24, 2026", "v": "The Grand Glasshouse & Orangery", "th": "floral", "l": "en", "t": [["t_sweetheart", "Sweetheart Table", 50, 19, "s"], ["t1", "Table 1 (Peony)", 21, 35, "r"], ["t2", "Table 2 (Rosewood)", 50, 35, "r"], ["t3", "Table 3 (Orchid)", 79, 35, "r"], ["t4", "Table 4 (Lavender)", 21, 58, "r"], ["t5", "Table 5 (Jasmine)", 79, 58, "r"], ["t6", "Table 6 (Magnolia)", 23, 79, "b"], ["t7", "Table 7 (Camellia)", 77, 79, "b"], ["t8", "Table 8 (Gardenia)", 35, 46, "r"], ["t9", "Table 9 (Hydrangea)", 65, 46, "r"], ["t10", "Table 10 (Dahlia)", 50, 71, "r"], ["t11", "Table 11 (Blossom)", 50, 86, "r"]], "o": [["dancefloor", 50, 51, 21, 21, "Dance Floor"], ["stage", 50, 9, 27, 9, "Grand Stage & Live Band"], ["dj", 81, 17, 8, 9, "DJ Booth"], ["bar", 12, 17, 12, 10, "Cocktail Bar"], ["buffet", 90, 49, 9, 21, "Buffet Station"], ["entrance", 50, 94, 17, 5, "Main Entrance"], ["pillar", 29, 28, 3, 4, "Pillar A"], ["pillar", 71, 28, 3, 4, "Pillar B"]], "g": [["Sophia Montgomery", "t_sweetheart", "Bride & Groom", "beef"], ["Liam Vance", "t_sweetheart", "Bride & Groom", "fish"], ["Eleanor Montgomery", "t1", "Montgomery Family", "vegan"], ["Arthur Montgomery", "t1", "Montgomery Family", "vegetarian"], ["Beatrice Montgomery", "t1", "Montgomery Family", "kids"], ["Henry Montgomery", "t1", "Montgomery Family", "beef"], ["Clara Vance", "t1", "Montgomery Family", "chicken"], ["Marcus Vance", "t1", "Montgomery Family", "fish"], ["Julian Vance", "t1", "Montgomery Family", "vegan"], ["Felix Vance", "t1", "Montgomery Family", "vegetarian"], ["Isabella Garcia", "t1", "Montgomery Family", "kids"], ["Mateo Garcia", "t1", "Montgomery Family", "beef"], ["Camila Garcia", "t2", "Vance Family", "chicken"], ["Sebastian Garcia", "t2", "Vance Family", "fish"], ["Olivia Chen", "t2", "Vance Family", "vegan"], ["Lucas Chen", "t2", "Vance Family", "vegetarian"], ["Emma Smith", "t2", "Vance Family", "kids"], ["Noah Smith", "t2", "Vance Family", "beef"], ["Ava Johnson", "t2", "Vance Family", "chicken"], ["Oliver Johnson", "t2", "Vance Family", "fish"], ["Charlotte Williams", "t2", "Vance Family", "vegan"], ["Elijah Williams", "t2", "Vance Family", "vegetarian"], ["Amelia Brown", "t3", "Vance Relatives", "kids"], ["James Brown", "t3", "Vance Relatives", "beef"], ["Harper Jones", "t3", "Vance Relatives", "chicken"], ["William Jones", "t3", "Vance Relatives", "fish"], ["Evelyn Miller", "t3", "Vance Relatives", "vegan"], ["Benjamin Miller", "t3", "Vance Relatives", "vegetarian"], ["Abigail Davis", "t3", "Vance Relatives", "kids"], ["Alexander Davis", "t3", "Vance Relatives", "beef"], ["Emily Wilson", "t4", "Bridal Party", "chicken"], ["Daniel Wilson", "t4", "Bridal Party", "fish"], ["Elizabeth Anderson", "t4", "Bridal Party", "vegan"], ["Matthew Anderson", "t4", "Bridal Party", "vegetarian"], ["Mila Taylor", "t4", "Bridal Party", "kids"], ["Henry Taylor", "t4", "Bridal Party", "beef"], ["Ella Thomas", "t4", "Bridal Party", "chicken"], ["Jackson Thomas", "t4", "Bridal Party", "fish"], ["Avery Moore", "t5", "University Friends", "vegan"], ["Samuel Moore", "t5", "University Friends", "vegetarian"], ["Sofia Jackson", "t5", "University Friends", "kids"], ["David Jackson", "t5", "University Friends", "beef"], ["Chloe Martin", "t5", "University Friends", "chicken"], ["Joseph Martin", "t5", "University Friends", "fish"], ["Victoria Lee", "t5", "University Friends", "vegan"], ["Carter Lee", "t5", "University Friends", "vegetarian"], ["Grace Perez", "t6", "High School Crew", "kids"], ["Owen Perez", "t6", "High School Crew", "beef"], ["Zoey Thompson", "t6", "High School Crew", "chicken"], ["Wyatt Thompson", "t6", "High School Crew", "fish"], ["Penelope White", "t6", "High School Crew", "vegan"], ["John White", "t6", "High School Crew", "vegetarian"], ["Riley Harris", "t6", "High School Crew", "kids"], ["Jack Harris", "t6", "High School Crew", "beef"], ["Nora Sanchez", "t6", "High School Crew", "chicken"], ["Luke Sanchez", "t6", "High School Crew", "fish"], ["Lily Clark", "t6", "High School Crew", "vegan"], ["Jayden Clark", "t6", "High School Crew", "vegetarian"], ["Hannah Ramirez", "t7", "Work Colleagues", "kids"], ["Dylan Ramirez", "t7", "Work Colleagues", "beef"], ["Lillian Lewis", "t7", "Work Colleagues", "chicken"], ["Grayson Lewis", "t7", "Work Colleagues", "fish"], ["Addison Robinson", "t7", "Work Colleagues", "vegan"], ["Levi Robinson", "t7", "Work Colleagues", "vegetarian"], ["Aubrey Walker", "t7", "Work Colleagues", "kids"], ["Isaac Walker", "t7", "Work Colleagues", "beef"], ["Ellie Young", "t7", "Work Colleagues", "chicken"], ["Gabriel Young", "t7", "Work Colleagues", "fish"], ["Stella Allen", "t7", "Work Colleagues", "vegan"], ["Julian Allen", "t7", "Work Colleagues", "vegetarian"], ["Natalie King", "t8", "Travel Club", "kids"], ["Anthony King", "t8", "Travel Club", "beef"], ["Zoe Wright", "t8", "Travel Club", "chicken"], ["Jaxon Wright", "t8", "Travel Club", "fish"], ["Leah Scott", "t8", "Travel Club", "vegan"], ["Lincoln Scott", "t8", "Travel Club", "vegetarian"], ["Hazel Torres", "t8", "Travel Club", "kids"], ["Joshua Torres", "t8", "Travel Club", "beef"], ["Violet Nguyen", "t9", "Neighborhood Friends", "chicken"], ["Christopher Nguyen", "t9", "Neighborhood Friends", "fish"], ["Aurora Hill", "t9", "Neighborhood Friends", "vegan"], ["Andrew Hill", "t9", "Neighborhood Friends", "vegetarian"], ["Savannah Flores", "t9", "Neighborhood Friends", "kids"], ["Theodore Flores", "t9", "Neighborhood Friends", "beef"], ["Audrey Green", "t9", "Neighborhood Friends", "chicken"], ["Caleb Green", "t9", "Neighborhood Friends", "fish"], ["Brooklyn Adams", "t10", "VIP Parents Table", "vegan"], ["Ryan Adams", "t10", "VIP Parents Table", "vegetarian"], ["Bella Nelson", "t10", "VIP Parents Table", "kids"], ["Asher Nelson", "t10", "VIP Parents Table", "beef"], ["Claire Baker", "t10", "VIP Parents Table", "chicken"], ["Nathan Baker", "t10", "VIP Parents Table", "fish"], ["Skylar Hall", "t10", "VIP Parents Table", "vegan"], ["Thomas Hall", "t10", "VIP Parents Table", "vegetarian"], ["Lucy Rivera", "t11", "Young Adults", "kids"], ["Leo Rivera", "t11", "Young Adults", "beef"], ["Paisley Campbell", "t11", "Young Adults", "chicken"], ["Isaiah Campbell", "t11", "Young Adults", "fish"], ["Everly Mitchell", "t11", "Young Adults", "vegan"], ["Charles Mitchell", "t11", "Young Adults", "vegetarian"], ["Anna Carter", "t11", "Young Adults", "kids"], ["Josiah Carter", "t11", "Young Adults", "beef"], ["Caroline Roberts", "t11", "Young Adults", "chicken"]]};
 var G_LIST=[],T_LIST=[];
+function cleanQrToken(str) {
+  if (!str) return '';
+  var cr = String.fromCharCode(13);
+  var nl = String.fromCharCode(10);
+  return String(str)
+    .split(cr).join(' ')
+    .split(nl).join(' ')
+    .replace(/~/g, '-')
+    .replace(/\^/g, '')
+    .replace(/\*/g, '•')
+    .replace(/\|/g, '/')
+    .replace(/:/g, ' -')
+    .replace(/,/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
 function decodeUltraCompactPayload(rawStr) {
   if (!rawStr) return null;
   var nl = String.fromCharCode(10);
@@ -1064,7 +1086,7 @@ if(ST.t&&ST.t.length){
         gArr.forEach(function(item){
           if(!item) return;
           var pt=item.split(':'), gn=pt[0], mc=pt[1]||'b';
-          G_LIST.push({name:gn, tableId:tid, tableName:tName, meal:mcMap[mc]||mc||'beef', allMates:gArr});
+          G_LIST.push({name:gn, tableId:tid, tableName:tName, meal:mcMap[mc]||mc||'beef', allMates:gArr, group:tName});
         });
       }
     });
@@ -1169,7 +1191,15 @@ document.getElementById('tTbl').textContent=g.tableName;
 
 var pty=[];
 if(g.allMates){
-  g.allMates.forEach(function(m){var mn=m.split(':')[0];if(mn!==g.name)pty.push(mn);});
+  var selfExcluded=false;
+  g.allMates.forEach(function(m){
+    var mn=m.split(':')[0].trim();
+    if(!selfExcluded && mn.toLowerCase()===g.name.toLowerCase()){
+      selfExcluded=true;
+    }else{
+      pty.push(mn);
+    }
+  });
 }else{
   G_LIST.forEach(function(x,i){if(i!==idx&&x.tableId===g.tableId)pty.push(x.name);});
 }
@@ -1219,7 +1249,7 @@ if(isH){
   c+='<circle cx="'+t.x+'" cy="'+t.y+'" r="'+r+'" fill="none" stroke="var(--acc)" class="radar-wave rw-2"/>';
   c+='<circle cx="'+t.x+'" cy="'+t.y+'" r="'+(r+2.6)+'" fill="none" stroke="var(--gold)" stroke-width="2" class="map-th"/>';
 }
-c+='<circle cx="'+t.x+'" cy="'+t.y+'" r="'+r+'" fill="'+(isH?'var(--acc)':'var(--card)')+'" stroke="'+(isH?'var(--gold)':'var(--mut)')+'" stroke-width="'+(isH?'2':'.8')+'"/>';
+c+='<circle cx="'+t.x+'" cy="'+t.y+'" r="'+r+'" fill="'+(isH?'var(--acc)':'var(--card, #ffffff)')+'" stroke="'+(isH?'var(--gold)':'var(--mut)')+'" stroke-width="'+(isH?'2':'.8')+'"/>';
 }else{
 var bw=(t.shape==='s'?9:13),bh=7,bx=t.x-bw/2,by=t.y-bh/2;
 if(isH){
@@ -1227,7 +1257,7 @@ if(isH){
   c+='<rect x="'+(bx-2)+'" y="'+(by-2)+'" width="'+(bw+4)+'" height="'+(bh+4)+'" rx="3" fill="none" stroke="var(--acc)" class="radar-wave rw-2"/>';
   c+='<rect x="'+(bx-1.5)+'" y="'+(by-1.5)+'" width="'+(bw+3)+'" height="'+(bh+3)+'" rx="2.5" fill="none" stroke="var(--gold)" stroke-width="2" class="map-th"/>';
 }
-c+='<rect x="'+bx+'" y="'+by+'" width="'+bw+'" height="'+bh+'" rx="1.5" fill="'+(isH?'var(--acc)':'var(--card)')+'" stroke="'+(isH?'var(--gold)':'var(--mut)')+'" stroke-width="'+(isH?'2':'.8')+'"/>';
+c+='<rect x="'+bx+'" y="'+by+'" width="'+bw+'" height="'+bh+'" rx="1.5" fill="'+(isH?'var(--acc)':'var(--card, #ffffff)')+'" stroke="'+(isH?'var(--gold)':'var(--mut)')+'" stroke-width="'+(isH?'2':'.8')+'"/>';
 }
 c+='<text x="'+t.x+'" y="'+(t.y+1)+'" font-size="2.7" font-weight="bold" fill="'+(isH?'#fff':'var(--txt)')+'" text-anchor="middle">'+escapeHtml(t.name.replace(/Table /i,'T'))+'</text>';
 if(isH){
@@ -1263,7 +1293,5 @@ window.addEventListener('message',function(e){
   }
 });
 </script>
-</body>
-</html>
 </body>
 </html>
